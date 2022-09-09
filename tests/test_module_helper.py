@@ -4,7 +4,7 @@
 """Unittest for Module Helper package"""
 
 import argparse
-from datetime import datetime
+from datetime import datetime, timezone
 from io import StringIO
 from json import JSONDecodeError
 import logging
@@ -185,9 +185,11 @@ class TestModuleHelper(unittest.TestCase):
         known_time_format = "%a, %d %b %Y %H:%M:%S"
 
         year = datetime.fromtimestamp(now).strftime(year_format)
-        full_time = datetime.fromtimestamp(now).strftime(time_format)
-        date_time = datetime.fromtimestamp(now).strftime(date_time_format)
-        known_time_expectation = "Sat, 03 Sep 2022 11:30:00"
+        full_time = datetime.fromtimestamp(now, tz=timezone.utc).strftime(
+            time_format)
+        date_time = datetime.fromtimestamp(now, tz=timezone.utc).strftime(
+            date_time_format)
+        known_time_expectation = "Sat, 03 Sep 2022 09:30:00"
 
         self.assertEqual(year, ModuleHelper.format_timestamp(
             timestamp=now,
