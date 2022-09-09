@@ -17,7 +17,7 @@ r"^\#\# \[\d{1,}[.]\d{1,}[.]\d{1,}\] \- \d{4}\-\d{2}-\d{2}$"
 -->
 
 ## Released
-## [0.1.0] - 2022-08-08
+## [0.1.0] - 2022-09-09
 ### Added
 - This changelog file
 - [`.coveragerc`](.coveragerc) file
