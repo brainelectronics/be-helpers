@@ -8,7 +8,7 @@ Collection of helper functions used in other modules
 """
 
 import argparse
-from datetime import datetime
+from datetime import datetime, timezone, tzinfo
 import json
 import logging
 from pathlib import Path
@@ -164,7 +164,9 @@ class ModuleHelper(object):
         return result
 
     @staticmethod
-    def format_timestamp(timestamp: int, format: str) -> str:
+    def format_timestamp(timestamp: int,
+                         format: str,
+                         tz: Optional[tzinfo] = timezone.utc) -> str:
         """
         Get timestamp as string in specified format
 
@@ -172,11 +174,13 @@ class ModuleHelper(object):
         :type       timestamp:  int
         :param      format:     The format
         :type       format:     str
+        :param      tz:         Timezone, default is UTC
+        :type       tz:         Optional[datetime.tzinfo]
 
         :returns:   Formatted timestamp
         :rtype:     str
         """
-        return datetime.fromtimestamp(timestamp).strftime(format)
+        return datetime.fromtimestamp(timestamp, tz=tz).strftime(format)
 
     @staticmethod
     def get_unix_timestamp() -> int:
