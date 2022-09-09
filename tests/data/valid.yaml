@@ -1,0 +1,7 @@
+key: val
+key2:
+  key_nested: val_nested
+key3:
+- asdf
+- 123
+- key4: val4
